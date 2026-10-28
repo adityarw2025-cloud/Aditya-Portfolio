@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VYRO by Aditya — High-Performance Websites, Apps & AI Solutions</title>
+  <meta name="description" content="VYRO is the modern digital studio founded by Aditya, a 3rd-year engineering student crafting ultra-fast websites, full-stack applications, and intelligent AI workflows for ambitious founders.">
+  <meta name="keywords" content="VYRO, Aditya, Web Development, Full-Stack Developer, AI Solutions, React, Next.js, Python, Digital Studio, UI/UX Design">
+  <meta name="author" content="Aditya">
+  
+  <!-- OpenGraph / Social Media -->
+  <meta property="og:title" content="VYRO by Aditya — Digital Studio & Portfolio">
+  <meta property="og:description" content="Crafting high-performance websites, apps, and AI solutions for startups and ambitious founders.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/aditya-hero.jpg">
+  <meta name="theme-color" content="#09090b">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/vyro-icon.svg">
+
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="ambient-background">
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+    <div class="ambient-glow-3"></div>
+  </div>
+  <canvas id="particle-canvas"></canvas>
+  <div class="grid-bg-overlay"></div>
+
+  <!-- ==========================================================================
+       1. Floating Glass Navbar
+       ========================================================================== -->
+  <header class="site-header" id="navbar">
+    <div class="container">
+      <nav class="navbar-pill">
+        <!-- Brand Logo with Glowing Pulse -->
+        <a href="#home" class="brand-link" aria-label="VYRO Home">
+          <div class="brand-icon-wrapper">
+            <!-- Official VYRO Monogram Mark -->
+            <img src="assets/images/vyro-symbol-transparent.png" alt="VYRO Logo" width="22" height="22">
+          </div>
+          <div class="brand-meta">
+            <span class="brand-title">VYRO <span class="brand-accent">.</span><span class="pulse-indicator" title="Available for new client projects"></span></span>
+            <span class="brand-by">by Aditya</span>
+          </div>
+        </a>
+
+        <!-- Center Pill Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#stack" class="nav-link">Stack</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Right Pill CTA & Sound Toggle -->
+        <div class="nav-actions">
+          <button class="audio-toggle-btn" id="btn-audio-toggle" title="Toggle Studio Audio Feedback" aria-label="Toggle Audio">
+            <svg id="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+          </button>
+          
+          <a href="#contact" class="btn-pill-primary">
+            <span>Let's Talk</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-drawer">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#about" class="nav-link">About Aditya</a>
+    <a href="#work" class="nav-link">Work Showcase</a>
+    <a href="#stack" class="nav-link">Tech Stack</a>
+    <a href="#estimator" class="nav-link">Scope Estimator</a>
+    <a href="#contact" class="nav-link">Contact & Inquiry</a>
+    <a href="#contact" class="btn-pill-primary" style="margin-top: 0.5rem; text-align: center;">Let's Talk &rarr;</a>
+    <div class="mobile-drawer-footer">
+      <button type="button" class="mobile-audio-toggle" id="btn-audio-toggle-drawer" aria-label="Toggle Sound Effects">
+        <svg id="sound-icon-drawer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <span id="sound-label-drawer">Studio Sound FX: Enabled</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. Hero Section (Mirrors Reference Composition)
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-radial-glow"></div>
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left Column: Hero Content & Pitch -->
+        <div class="hero-content reveal-on-scroll">
+          <!-- Founder Badge Pill -->
+          <div class="hero-badge-pill">
+            <span class="pulse-indicator"></span>
+            <span>Hey, I am <strong class="highlight-founder">Aditya</strong> • Founder of VYRO</span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 class="hero-title">
+            Crafting High-Performance <span class="gradient-text">Websites, Apps & AI Solutions</span>
+          </h1>
+
+          <!-- Value Statement -->
+          <p class="hero-subtitle">
+            I combine modern design engineering with smart AI workflows to build online experiences that help ambitious businesses attract clients, scale revenue, and stand out.
+          </p>
+
+          <!-- CTA Row -->
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn-pill-primary">
+              <span>Start a Project</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a href="#contact" class="btn-pill-secondary btn-icon-circle" title="Send Direct Message" aria-label="Get in Touch via Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+
+            <a href="#work" class="btn-pill-secondary">
+              <span>View Case Studies</span>
+            </a>
+          </div>
+
+          <!-- Quick Stats / Trust Indicators -->
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <span class="stat-number">3rd<span class="plus">Yr</span></span>
+              <span class="stat-label">Engineering Student</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-number">100<span class="plus">%</span></span>
+              <span class="stat-label">Client Delivery Focus</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-number">&lt;1<span class="plus">s</span></span>
+              <span class="stat-label">Sub-Second Load Times</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Center with Orbital Rings & Tech Badges -->
+        <div class="hero-visual-wrapper reveal-on-scroll">
+          
+          <!-- Decorative Floating 3D Glass Prisms (matching reference layout) -->
+          <div class="glass-prism-accent prism-top-right"></div>
+          <div class="glass-prism-accent prism-bottom-left"></div>
+
+          <!-- Concentric Orbital Rings -->
+          <div class="orbit-system">
+            <div class="orbit-ring ring-outer"></div>
+            <div class="orbit-ring ring-middle"></div>
+            <div class="orbit-ring ring-inner"></div>
+          </div>
+
+          <!-- Floating Orbiting Tech Badges -->
+          <!-- React -->
+          <div class="orbit-badge badge-react" title="React Framework">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#61dafb" stroke-width="2">
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(30 12 12)"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(90 12 12)"/>
+                <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(150 12 12)"/>
+                <circle cx="12" cy="12" r="2" fill="#61dafb"/>
+              </svg>
+            </div>
+            <span>React</span>
+          </div>
+
+          <!-- AI & LLMs -->
+          <div class="orbit-badge badge-ai" title="AI & Agentic Workflows">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff7d45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <span>AI Solutions</span>
+          </div>
+
+          <!-- Next.js -->
+          <div class="orbit-badge badge-nextjs" title="Next.js App Router">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="#ffffff">
+                <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.4 17.5l-6.1-8.5v8.5H9.5V6.5h1.8l6.1 8.5V6.5h1.8v11h-1.8z"/>
+              </svg>
+            </div>
+            <span>Next.js</span>
+          </div>
+
+          <!-- Python -->
+          <div class="orbit-badge badge-python" title="Python & Backend Logic">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 16v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h8a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3"/>
+                <circle cx="9" cy="8" r="1" fill="#38bdf8"/>
+                <circle cx="15" cy="16" r="1" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <span>Python</span>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="orbit-badge badge-tailwind" title="Tailwind CSS">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="#38bdf8">
+                <path d="M12 6c-3.3 0-5.4 1.7-6.2 5 1.2-1.7 2.7-2.3 4.4-1.7 1 0.4 1.7 1.1 2.5 1.9C14 12.5 15.5 14 18.8 14c3.3 0 5.4-1.7 6.2-5-1.2 1.7-2.7 2.3-4.4 1.7-1-0.4-1.7-1.1-2.5-1.9C16.8 7.5 15.2 6 12 6zM5.8 14C2.5 14 0.4 15.7-0.4 19c1.2-1.7 2.7-2.3 4.4-1.7 1 0.4 1.7 1.1 2.5 1.9 1.3 1.3 2.8 2.8 6.1 2.8 3.3 0 5.4-1.7 6.2-5-1.2 1.7-2.7 2.3-4.4 1.7-1-0.4-1.7-1.1-2.5-1.9C10.6 15.5 9.1 14 5.8 14z"/>
+              </svg>
+            </div>
+            <span>Tailwind</span>
+          </div>
+
+          <!-- Figma -->
+          <div class="orbit-badge badge-figma" title="Figma UI/UX Prototyping">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="2" width="7" height="7" rx="3.5" fill="#F24E1E"/>
+                <rect x="12" y="2" width="7" height="7" rx="3.5" fill="#FF7262"/>
+                <rect x="5" y="9" width="7" height="7" rx="3.5" fill="#A259FF"/>
+                <circle cx="15.5" cy="12.5" r="3.5" fill="#1ABCFE"/>
+                <rect x="5" y="16" width="7" height="7" rx="3.5" fill="#0ACF83"/>
+              </svg>
+            </div>
+            <span>Figma</span>
+          </div>
+
+          <!-- Central Character Showcase (Aditya, Founder of VYRO) -->
+          <div class="hero-avatar-center">
+            <div class="hero-avatar-inner">
+              <img src="assets/images/aditya-hero.jpg" alt="Aditya — Founder of VYRO" class="hero-avatar-img">
+            </div>
+            <!-- Live Availability Tag -->
+            <div class="founder-live-pill">
+              <span class="pulse-indicator"></span>
+              <span>Aditya • Taking Q4 Projects</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. Core Services Grid
+       ========================================================================== -->
+  <section id="services">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill-tag">What VYRO Delivers</div>
+        <h2 class="section-title">Engineered for Scale, Speed & Precision</h2>
+        <p class="section-desc">
+          From first impression to scalable backend architecture, I build full-lifecycle digital assets designed to convert visitors into clients.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Service 1: Modern Websites & Landing Pages -->
+        <div class="service-card reveal-on-scroll">
+          <span class="service-number">01</span>
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 class="service-title">Modern Websites & Landing Pages</h3>
+          <p class="service-description">
+            Responsive, pixel-perfect designs built for blazing speed, SEO supremacy, and sky-high conversion. Bespoke animations and responsive glassmorphism.
+          </p>
+          <ul class="service-features-list">
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> 95+ Google Lighthouse Speed Score</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Framer Motion & CSS Micro-Interactions</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Next-Gen SEO & OpenGraph Meta</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Responsive across all Mobile & 4K screens</li>
+          </ul>
+          <div class="service-card-action">
+            <a href="#contact" class="service-btn-link" onclick="preselectService('website')">
+              <span>Commission Website</span> &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2: Web & Mobile Applications -->
+        <div class="service-card reveal-on-scroll">
+          <span class="service-number">02</span>
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="service-title">Web & Mobile Applications</h3>
+          <p class="service-description">
+            Dynamic full-stack web and mobile apps engineered with robust architecture, secure auth, real-time databases, and slick state management.
+          </p>
+          <ul class="service-features-list">
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Full-Stack Next.js, React & Node/Python</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Supabase, PostgreSQL & Firebase Integration</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Payment Processing (Stripe, LemonSqueezy)</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Rock-solid API & Webhook Infrastructure</li>
+          </ul>
+          <div class="service-card-action">
+            <a href="#contact" class="service-btn-link" onclick="preselectService('app')">
+              <span>Build an Application</span> &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3: Custom AI Solutions -->
+        <div class="service-card reveal-on-scroll">
+          <span class="service-number">03</span>
+          <div class="service-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"></path>
+              <path d="M16 11v1a4 4 0 0 1-8 0v-1"></path>
+              <path d="M12 16v6M8 22h8"></path>
+              <circle cx="12" cy="7" r="1"></circle>
+            </svg>
+          </div>
+          <h3 class="service-title">Custom AI Solutions</h3>
+          <p class="service-description">
+            Automate high-value business workflows, deploy intelligent domain-specific chatbots, and integrate cutting-edge LLMs directly into your product.
+          </p>
+          <ul class="service-features-list">
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Autonomous Multi-Agent Systems (LangChain)</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Vector Embeddings & RAG Document Search</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> Custom AI Workflow & Zapier/Make Pipelines</li>
+            <li class="service-feature-item"><span class="feature-check-icon">✓</span> OpenAI, Anthropic & Gemini API Pipelines</li>
+          </ul>
+          <div class="service-card-action">
+            <a href="#contact" class="service-btn-link" onclick="preselectService('ai')">
+              <span>Deploy AI Workflows</span> &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. About Me Section (Aditya's Story)
+       ========================================================================== -->
+  <section id="about">
+    <div class="container">
+      
+      <div class="about-card-container reveal-on-scroll">
+        <div class="about-layout-grid">
+          
+          <!-- Left: Founder Persona & Identity -->
+          <div class="about-founder-card">
+            <div class="about-avatar-ring">
+              <img src="assets/images/aditya-hero.jpg" alt="Aditya Portrait" class="about-avatar-img">
+            </div>
+            <h3 class="about-founder-name">Aditya</h3>
+            <span class="about-founder-tag">Founder & Lead Engineer @ VYRO</span>
+            
+            <div class="about-badges-row">
+              <span class="about-badge">🎓 3rd-Year Engineering Student</span>
+              <span class="about-badge">⚡ Full-Stack Developer</span>
+              <span class="about-badge">🤖 AI Systems Builder</span>
+            </div>
+
+            <div class="about-meta-grid">
+              <div class="meta-item">
+                <span class="meta-key">Focus Area</span>
+                <span class="meta-val">Web Design & AI</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-key">Availability</span>
+                <span class="meta-val">Active • Q4 2026</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-key">Response Time</span>
+                <span class="meta-val">&lt; 4 Hours</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-key">Philosophy</span>
+                <span class="meta-val">Zero Fluff • Pure Speed</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Aditya's Story & Core Pillars -->
+          <div class="about-text-content">
+            <div class="section-pill-tag">The Builder's Journey</div>
+            <h2 class="section-title" style="margin-bottom: 0.75rem;">Meet the Mind Behind VYRO</h2>
+            
+            <p class="about-story-p">
+              I am <strong>Aditya</strong>, a passionate 3rd-year engineering student blending rigorous computer science engineering principles with the fine artistry of modern UI/UX design.
+            </p>
+            
+            <p class="about-story-p">
+              Too many founders deal with traditional agencies that move at a glacial pace, pad invoices, and write spaghetti code. I started <strong>VYRO</strong> with a singular mission: <strong>partnering directly with visionary founders to take ideas from zero to launch with uncompromising speed and aesthetic dominance.</strong>
+            </p>
+
+            <!-- 4 Engineering Pillars -->
+            <div class="about-pillars-grid">
+              <div class="pillar-box">
+                <div class="pillar-header">
+                  <span class="pillar-icon">📐</span>
+                  <span>Engineering Rigor</span>
+                </div>
+                <p class="pillar-desc">Clean, modular code built to withstand real traffic, automated testing, and zero technical debt.</p>
+              </div>
+
+              <div class="pillar-box">
+                <div class="pillar-header">
+                  <span class="pillar-icon">✨</span>
+                  <span>Aesthetic Mastery</span>
+                </div>
+                <p class="pillar-desc">Dark glassmorphism, tailored typography, and 60fps micro-animations that make your brand unforgettable.</p>
+              </div>
+
+              <div class="pillar-box">
+                <div class="pillar-header">
+                  <span class="pillar-icon">⚡</span>
+                  <span>Fast Turnaround</span>
+                </div>
+                <p class="pillar-desc">Iterative agile sprints. You see functional prototypes within days, not months.</p>
+              </div>
+
+              <div class="pillar-box">
+                <div class="pillar-header">
+                  <span class="pillar-icon">🤝</span>
+                  <span>Direct Collaboration</span>
+                </div>
+                <p class="pillar-desc">You talk directly to the engineer building your product. Immediate feedback loops and weekly syncs.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. Project Showcase (STRICT IMAGE REQUIREMENT FULFILLED)
+       NO random unsplash/stock images. Clean branded UI placeholder frames
+       with VYRO accent glow + interactive drop target to upload screenshots.
+       ========================================================================== -->
+  <section id="work">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill-tag">Selected Case Studies</div>
+        <h2 class="section-title">Built for Performance & Real Impact</h2>
+        <p class="section-desc">
+          Featured engineering projects designed for high conversion. Switch between interactive PC and Mobile views to explore live responsive implementations!
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Project 1: Urban Khauboy (Top 1) -->
+        <article class="project-card reveal-on-scroll" data-project-id="urban-khauboy">
+          <!-- Mock Browser Header Frame -->
+          <div class="browser-frame-header">
+            <div class="traffic-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="mock-url-bar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span class="url-display-text">urbankhauboy.in/squad-booking</span>
+            </div>
+            <div class="device-switcher-pills">
+              <button type="button" class="dev-switch-btn active" data-view="pc" title="Desktop PC View">
+                <span>🖥️ PC View</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen Container with Images -->
+          <div class="project-screen-container">
+            <img class="project-display-img" src="assets/images/urban-khauboy-pc.png" alt="Urban Khauboy Desktop Experience" data-pc-src="assets/images/urban-khauboy-pc.png" data-pc-url="urbankhauboy.in/squad-booking">
+
+            <div class="view-indicator-pill">
+              <span class="view-pill-dot"></span>
+              <span class="view-pill-text">PC Desktop View</span>
+            </div>
+
+            <button type="button" class="expand-preview-btn" title="View Full High-Res Screenshot">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <span>Preview</span>
+            </button>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-info-body">
+            <div class="project-tag-row">
+              <span class="project-category-tag">Dynamic Dining Web App • Group Reservations</span>
+              <span class="project-status-badge">Production Ready</span>
+            </div>
+            <h3 class="project-title">Urban Khauboy — Squad Dining & Interactive Ordering</h3>
+            <p class="project-desc">
+              Developed an immersive, high-contrast web portal for an energetic urban culinary brand. Features 'Gather Your Favorite Squad' group spot reservation workflow, live digital menu showcase, and an integrated 'Chat with Khauboy' interactive concierge.
+            </p>
+            <div class="project-tech-pills">
+              <span class="tech-mini-pill">Modern JavaScript</span>
+              <span class="tech-mini-pill">CSS3 Backdrop Filter</span>
+              <span class="tech-mini-pill">Interactive Concierge Widget</span>
+              <span class="tech-mini-pill">Responsive Web Architecture</span>
+            </div>
+            <div class="project-actions-row">
+              <a href="#contact" class="project-link-cta">
+                <span>View Live Demo</span> &rarr;
+              </a>
+              <button type="button" class="case-study-btn" data-study="khauboy">
+                <span>Read Architecture</span> ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: The Bachelors Cafe (Top 2) -->
+        <article class="project-card reveal-on-scroll" data-project-id="bachelors-cafe">
+          <!-- Mock Browser Header Frame -->
+          <div class="browser-frame-header">
+            <div class="traffic-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="mock-url-bar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span class="url-display-text">thebachelorscafe.com/menu</span>
+            </div>
+            <div class="device-switcher-pills">
+              <button type="button" class="dev-switch-btn active" data-view="pc" title="Desktop PC View">
+                <span>🖥️ PC View</span>
+              </button>
+              <button type="button" class="dev-switch-btn" data-view="mobile" title="Mobile Ordering View">
+                <span>📱 Mobile View</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen Container with Images -->
+          <div class="project-screen-container">
+            <img class="project-display-img" src="assets/images/bachelors-cafe-pc.png" alt="The Bachelors Cafe Desktop Menu" data-pc-src="assets/images/bachelors-cafe-pc.png" data-pc-url="thebachelorscafe.com/menu" data-mobile-src="assets/images/bachelors-cafe-mobile.jpg" data-mobile-url="thebachelorscafe.com/m/quick-bites">
+
+            <div class="view-indicator-pill">
+              <span class="view-pill-dot"></span>
+              <span class="view-pill-text">PC Desktop View</span>
+            </div>
+
+            <button type="button" class="expand-preview-btn" title="View Full High-Res Screenshot">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <span>Preview</span>
+            </button>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-info-body">
+            <div class="project-tag-row">
+              <span class="project-category-tag">Hospitality eCommerce • Editorial Design</span>
+              <span class="project-status-badge">High Conversion</span>
+            </div>
+            <h3 class="project-title">The Bachelors Cafe — Artisanal Menu & Instant Table Booking</h3>
+            <p class="project-desc">
+              Crafted a typography-driven digital cafe experience ('Pick your poison, partner'). Features real-time dietary availability indicators, interactive Specialty Brews & Quick Bites filtering, and an instant table booking engine with live concierge chat.
+            </p>
+            <div class="project-tech-pills">
+              <span class="tech-mini-pill">Vanilla JS & Modern CSS</span>
+              <span class="tech-mini-pill">Web Animations API</span>
+              <span class="tech-mini-pill">Responsive Layout</span>
+              <span class="tech-mini-pill">Editorial Typography</span>
+              <span class="tech-mini-pill">Local Storage</span>
+            </div>
+            <div class="project-actions-row">
+              <a href="#contact" class="project-link-cta">
+                <span>View Live Demo</span> &rarr;
+              </a>
+              <button type="button" class="case-study-btn" data-study="bachelors">
+                <span>Read Architecture</span> ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: FarmSetu (Bottom 1) -->
+        <article class="project-card reveal-on-scroll" data-project-id="farmsetu">
+          <!-- Mock Browser Header Frame -->
+          <div class="browser-frame-header">
+            <div class="traffic-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="mock-url-bar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span class="url-display-text">farmsetu.in/farmer/dashboard</span>
+            </div>
+            <div class="device-switcher-pills">
+              <button type="button" class="dev-switch-btn active" data-view="pc" title="Desktop PC View">
+                <span>🖥️ PC View</span>
+              </button>
+              <button type="button" class="dev-switch-btn" data-view="mobile" title="Mobile Dashboard View">
+                <span>📱 Mobile View</span>
+              </button>
+              <button type="button" class="dev-switch-btn" data-view="market" title="Mobile Marketplace View">
+                <span>🛒 Market</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen Container with Images -->
+          <div class="project-screen-container">
+            <img class="project-display-img" src="assets/images/farmsetu-pc.png" alt="FarmSetu Desktop Dashboard" data-pc-src="assets/images/farmsetu-pc.png" data-pc-url="farmsetu.in/farmer/dashboard" data-mobile-src="assets/images/farmsetu-mobile-home.png" data-mobile-url="farmsetu.in/m/farmer-home" data-market-src="assets/images/farmsetu-mobile-market.png" data-market-url="farmsetu.in/m/marketplace">
+
+            <div class="view-indicator-pill">
+              <span class="view-pill-dot"></span>
+              <span class="view-pill-text">PC Desktop View</span>
+            </div>
+
+            <button type="button" class="expand-preview-btn" title="View Full High-Res Screenshot">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <span>Preview</span>
+            </button>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-info-body">
+            <div class="project-tag-row">
+              <span class="project-category-tag">AgriTech & Live Telemetry • Full-Stack Platform</span>
+              <span class="project-status-badge">Live In Production</span>
+            </div>
+            <h3 class="project-title">FarmSetu — Direct Kisan Marketplace & Weather Telemetry</h3>
+            <p class="project-desc">
+              Engineered an end-to-end agri-tech ecosystem connecting Indian farmers directly with buyers. Features real-time OpenWeather radar telemetry, broker-free crop marketplace, machinery rentals, and automated FarmCheck quality evaluations.
+            </p>
+            <div class="project-tech-pills">
+              <span class="tech-mini-pill">React / Next.js</span>
+              <span class="tech-mini-pill">OpenWeather API</span>
+              <span class="tech-mini-pill">Tailwind CSS</span>
+              <span class="tech-mini-pill">Node.js</span>
+              <span class="tech-mini-pill">PWA</span>
+              <span class="tech-mini-pill">Cloudinary</span>
+            </div>
+            <div class="project-actions-row">
+              <a href="#contact" class="project-link-cta">
+                <span>Request Live Demo</span> &rarr;
+              </a>
+              <button type="button" class="case-study-btn" data-study="farmsetu">
+                <span>Read Architecture</span> ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: FarmSetu Multi-Device Telemetry (Bottom 2) -->
+        <article class="project-card reveal-on-scroll" data-project-id="farmsetu-telemetry">
+          <!-- Mock Browser Header Frame -->
+          <div class="browser-frame-header">
+            <div class="traffic-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="mock-url-bar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span class="url-display-text">farmsetu.in/architecture/telemetry</span>
+            </div>
+            <div class="device-switcher-pills">
+              <button type="button" class="dev-switch-btn active" data-view="pc" title="Synchronized Multi-Device Architecture">
+                <span>📱+🖥️ Multi-Device</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen Container with Images -->
+          <div class="project-screen-container">
+            <img class="project-display-img" src="assets/images/farmsetu-devices.png" alt="FarmSetu Cross-Platform Architecture" data-pc-src="assets/images/farmsetu-devices.png" data-pc-url="farmsetu.in/architecture/telemetry">
+
+            <div class="view-indicator-pill">
+              <span class="view-pill-dot"></span>
+              <span class="view-pill-text">Cross-Platform Responsive Architecture</span>
+            </div>
+
+            <button type="button" class="expand-preview-btn" title="View Full High-Res Screenshot">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <span>Preview</span>
+            </button>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-info-body">
+            <div class="project-tag-row">
+              <span class="project-category-tag">Systems Architecture • Responsive Cross-Platform</span>
+              <span class="project-status-badge">Synchronized System</span>
+            </div>
+            <h3 class="project-title">FarmSetu Telemetry Hub — Responsive Cross-Device System</h3>
+            <p class="project-desc">
+              Architected a synchronized multi-device interface uniting field smartphones, live OpenWeather radar telemetry, and desktop trading command centers. Guarantees sub-100ms state updates and 60fps responsive scaling across all viewports.
+            </p>
+            <div class="project-tech-pills">
+              <span class="tech-mini-pill">Cross-Platform UI/UX</span>
+              <span class="tech-mini-pill">OpenWeather Radar</span>
+              <span class="tech-mini-pill">Responsive Drawers</span>
+              <span class="tech-mini-pill">Telemetry Feeds</span>
+              <span class="tech-mini-pill">Low-Bandwidth Optimization</span>
+            </div>
+            <div class="project-actions-row">
+              <a href="#contact" class="project-link-cta">
+                <span>View Live Demo</span> &rarr;
+              </a>
+              <button type="button" class="case-study-btn" data-study="farmsetu-arch">
+                <span>Read Architecture</span> ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. Tech Stack & Tools Section
+       ========================================================================== -->
+  <section id="stack">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill-tag">Battle-Tested Technologies</div>
+        <h2 class="section-title">The VYRO Engineering Arsenal</h2>
+        <p class="section-desc">
+          Only high-performance, modern frameworks and developer tools selected for blistering speed, ironclad security, and seamless developer experience.
+        </p>
+      </div>
+
+      <!-- Infinite Moving Marquee -->
+      <div class="marquee-container reveal-on-scroll">
+        <div class="marquee-track">
+          <!-- Items duplicated for seamless infinite CSS scroll -->
+          <div class="marquee-badge">
+            <span class="marquee-icon">⚛️</span>
+            <span>React & Next.js 14</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🐍</span>
+            <span>Python & FastAPI</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">⚡</span>
+            <span>Supabase & PostgreSQL</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🎨</span>
+            <span>Tailwind CSS & Vanilla CSS</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🤖</span>
+            <span>OpenAI, Anthropic & Gemini APIs</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">📐</span>
+            <span>Figma UI/UX Systems</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">📦</span>
+            <span>Docker & Microservices</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">💳</span>
+            <span>Stripe Connect & Payments</span>
+          </div>
+
+          <!-- Duplicate 1-8 for looping -->
+          <div class="marquee-badge">
+            <span class="marquee-icon">⚛️</span>
+            <span>React & Next.js 14</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🐍</span>
+            <span>Python & FastAPI</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">⚡</span>
+            <span>Supabase & PostgreSQL</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🎨</span>
+            <span>Tailwind CSS & Vanilla CSS</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">🤖</span>
+            <span>OpenAI, Anthropic & Gemini APIs</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">📐</span>
+            <span>Figma UI/UX Systems</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">📦</span>
+            <span>Docker & Microservices</span>
+          </div>
+          <div class="marquee-badge">
+            <span class="marquee-icon">💳</span>
+            <span>Stripe Connect & Payments</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack Categorized Cards Grid -->
+      <div class="stack-cards-grid reveal-on-scroll">
+        
+        <div class="stack-card">
+          <div class="stack-card-top">
+            <div class="stack-icon-box">⚛️</div>
+            <span class="stack-level">Mastery: 98%</span>
+          </div>
+          <h4 class="stack-card-title">Next.js & React</h4>
+          <p class="stack-card-desc">Server-side rendering, streaming interfaces, static site generation, and optimized client state.</p>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-top">
+            <div class="stack-icon-box">🐍</div>
+            <span class="stack-level">Mastery: 95%</span>
+          </div>
+          <h4 class="stack-card-title">Python & FastAPI</h4>
+          <p class="stack-card-desc">High-throughput asynchronous backends, background worker queues, and custom machine learning pipelines.</p>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-top">
+            <div class="stack-icon-box">🤖</div>
+            <span class="stack-level">Mastery: 92%</span>
+          </div>
+          <h4 class="stack-card-title">AI & LLM Integration</h4>
+          <p class="stack-card-desc">Custom RAG architectures, prompt chaining, function calling, and automated agentic decision workflows.</p>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-top">
+            <div class="stack-icon-box">⚡</div>
+            <span class="stack-level">Mastery: 94%</span>
+          </div>
+          <h4 class="stack-card-title">Supabase & Database</h4>
+          <p class="stack-card-desc">PostgreSQL schema design, Row-Level Security policies, edge functions, and real-time socket subscriptions.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. Interactive Project Scope & Timeline Estimator
+       ========================================================================== -->
+  <section id="estimator">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill-tag">Instant Project Calculator</div>
+        <h2 class="section-title">Estimate Your Project Scope</h2>
+        <p class="section-desc">
+          Test your requirements interactively to get a transparent timeline breakdown before initiating your project inquiry.
+        </p>
+      </div>
+
+      <div class="estimator-card reveal-on-scroll">
+        <div class="estimator-grid">
+          
+          <!-- Estimator Inputs -->
+          <div class="calc-inputs-side">
+            
+            <!-- Step 1: Project Type -->
+            <div class="calc-step-group">
+              <label class="calc-step-label">
+                <span class="step-num">1</span>
+                <span>Select Your Project Type</span>
+              </label>
+              <div class="calc-pill-options">
+                <button type="button" class="calc-option-btn type-option active" data-value="Modern Website & Landing Page">Website / Landing Page</button>
+                <button type="button" class="calc-option-btn type-option" data-value="Full-Stack Web & Mobile App">Full-Stack Application</button>
+                <button type="button" class="calc-option-btn type-option" data-value="Custom AI Workflow & Integration">Custom AI Workflow</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Desired Timeline -->
+            <div class="calc-step-group">
+              <label class="calc-step-label">
+                <span class="step-num">2</span>
+                <span>Target Timeline</span>
+              </label>
+              <div class="calc-pill-options">
+                <button type="button" class="calc-option-btn speed-option" data-value="Express Sprint (1-2 Weeks)">⚡ Express Sprint (1-2 Weeks)</button>
+                <button type="button" class="calc-option-btn speed-option active" data-value="Standard (3-4 Weeks)">📅 Standard (3-4 Weeks)</button>
+                <button type="button" class="calc-option-btn speed-option" data-value="Comprehensive (5-8 Weeks)">🚀 Comprehensive (5-8 Weeks)</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Key Features Needed -->
+            <div class="calc-step-group">
+              <label class="calc-step-label">
+                <span class="step-num">3</span>
+                <span>Core Capabilities Included</span>
+              </label>
+              <div class="calc-pill-options">
+                <button type="button" class="calc-option-btn feature-option active" data-value="Responsive UI">Responsive UI</button>
+                <button type="button" class="calc-option-btn feature-option active" data-value="SEO Optimization">SEO Optimization</button>
+                <button type="button" class="calc-option-btn feature-option" data-value="Auth & User Accounts">Auth & Accounts</button>
+                <button type="button" class="calc-option-btn feature-option" data-value="Stripe Payments">Stripe Payments</button>
+                <button type="button" class="calc-option-btn feature-option" data-value="AI Chatbot / Vector RAG">AI Chatbot / RAG</button>
+                <button type="button" class="calc-option-btn feature-option" data-value="Custom CMS Dashboard">Custom CMS</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Estimator Summary Panel -->
+          <div class="calc-summary-panel">
+            <h3 class="summary-header">Scope Breakdown</h3>
+            
+            <div class="summary-line-item">
+              <span class="label">Project Type</span>
+              <span class="value" id="summary-type">Modern Website & Landing Page</span>
+            </div>
+
+            <div class="summary-line-item">
+              <span class="label">Pace & Timeline</span>
+              <span class="value" id="summary-speed">Standard (3-4 Weeks)</span>
+            </div>
+
+            <div class="summary-line-item">
+              <span class="label">Selected Features</span>
+              <span class="value" id="summary-features">Responsive UI, SEO Optimization</span>
+            </div>
+
+            <div class="summary-timeline-badge">
+              <span class="timeline-icon">⏱️</span>
+              <div class="timeline-info">
+                <span class="timeline-title">Target Delivery Window</span>
+                <span class="timeline-sub" id="summary-timeline-val">Standard (3-4 Weeks)</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn-pill-primary" id="btn-apply-estimate" style="width: 100%;">
+              <span>Apply to Project Inquiry &darr;</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. Contact & Project Inquiry Section
+       ========================================================================== -->
+  <section id="contact">
+    <div class="container">
+      
+      <div class="section-header reveal-on-scroll">
+        <div class="section-pill-tag">Let's Build Together</div>
+        <h2 class="section-title">Ready to Elevate Your Digital Presence?</h2>
+        <p class="section-desc">
+          Tell me about your product, your goals, and your timeline. I reply within 4 hours with technical recommendations and next steps.
+        </p>
+      </div>
+
+      <div class="contact-layout-grid">
+        
+        <!-- Left: Minimalist Glassmorphism Form -->
+        <div class="contact-glass-box reveal-on-scroll">
+          <form id="project-inquiry-form" class="contact-form">
+            
+            <!-- Web3Forms Integration -->
+            <input type="hidden" name="access_key" value="94027d6b-5bda-4c79-8ef6-2851d46d5115">
+            <input type="hidden" name="subject" value="🔥 New VYRO Project Inquiry">
+            <input type="hidden" name="from_name" value="VYRO Portfolio">
+            <input type="hidden" name="redirect" value="">
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name *</label>
+                <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Elon, Sarah, David" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Your Email *</label>
+                <input type="email" id="contact-email" name="email" class="form-input" placeholder="you@company.com" required>
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="contact-service" class="form-label">Service Needed</label>
+                <select id="contact-service" name="service" class="form-select">
+                  <option value="website">Modern Website & Landing Page</option>
+                  <option value="app">Web & Mobile Application</option>
+                  <option value="ai">Custom AI Solution & Automation</option>
+                  <option value="full">Full Digital Studio Transformation</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contact-timeline" class="form-label">Timeline / Budget</label>
+                <select id="contact-timeline" name="timeline" class="form-select">
+                  <option value="urgent">Rush / Urgent (1-2 Weeks)</option>
+                  <option value="standard" selected>Standard (3-4 Weeks)</option>
+                  <option value="flexible">Flexible / Milestone Based</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Project Details & Vision *</label>
+              <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell Aditya about what you want to build, current challenges, and any reference designs you love..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-pill-primary" id="btn-submit-inquiry" style="width: 100%; justify-content: center;">
+              <span>Send Project Inquiry</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Direct Connect Cards & Socials -->
+        <div class="contact-details-side reveal-on-scroll">
+          
+          <!-- Direct Email Card -->
+          <div class="direct-connect-card">
+            <div class="connect-left">
+              <div class="connect-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="connect-meta">
+                <span class="connect-type">Direct Email</span>
+                <a href="mailto:adityarw2025@gmail.com" class="connect-val">adityarw2025@gmail.com</a>
+              </div>
+            </div>
+            <button class="copy-pill-btn btn-copy-email" title="Copy Email to Clipboard">
+              <span>Copy</span>
+            </button>
+          </div>
+
+          <!-- Direct Mobile & WhatsApp Card -->
+          <div class="direct-connect-card">
+            <div class="connect-left">
+              <div class="connect-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="connect-meta">
+                <span class="connect-type">Mobile & WhatsApp</span>
+                <a href="tel:+917709523070" class="connect-val">+91 7709523070</a>
+              </div>
+            </div>
+            <div class="connect-actions">
+              <a href="https://wa.me/917709523070" target="_blank" rel="noopener noreferrer" class="copy-pill-btn" title="Chat on WhatsApp">
+                <span>WhatsApp</span>
+              </a>
+              <button class="copy-pill-btn btn-copy-phone" title="Copy Mobile Number to Clipboard">
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Availability & Direct Founder Callout -->
+          <div class="availability-banner">
+            <div class="avail-beacon"></div>
+            <p class="avail-text">
+              <strong>Direct Founder Access:</strong> Aditya personally reviews all incoming briefs. No middleman agency account managers. Direct Slack or Telegram channels setup for all active projects.
+            </p>
+          </div>
+
+          <!-- Social Handles Row -->
+          <div class="socials-badge-row">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-glass-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-glass-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-glass-pill">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>Twitter / X</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand-link">
+          <div class="brand-icon-wrapper">
+            <!-- Official VYRO Monogram Mark -->
+            <img src="assets/images/vyro-symbol-transparent.png" alt="VYRO Logo" width="22" height="22">
+          </div>
+          <div class="brand-meta">
+            <span class="brand-title">VYRO <span class="brand-accent">.</span></span>
+            <span class="brand-by">by Aditya</span>
+          </div>
+        </div>
+
+        <p class="footer-engineered">
+          ⚡ Engineered for ambitious founders, creators & businesses.
+        </p>
+
+        <button class="back-to-top-btn" title="Back to Top" aria-label="Back to Top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 VYRO by Aditya. All rights reserved.</span>
+        <span class="footer-copy">Crafted with precision &bull; 60fps Glassmorphism Design System</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       10. Case Study Architecture Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="case-study-modal" role="dialog" aria-modal="true">
+    <div class="modal-content-box">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Case Study">&times;</button>
+      
+      <div class="section-pill-tag" id="modal-category">AI Platform</div>
+      <h2 id="modal-title" style="color: #fff; font-size: 1.6rem; margin-bottom: 1.5rem; letter-spacing: -0.02em;">Project Title</h2>
+
+      <div style="margin-bottom: 1.25rem;">
+        <h4 style="color: var(--accent-orange-bright); font-size: 0.95rem; margin-bottom: 0.35rem;">The Engineering Challenge</h4>
+        <p id="modal-challenge" style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;"></p>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <h4 style="color: #10b981; font-size: 0.95rem; margin-bottom: 0.35rem;">The Architecture & Solution</h4>
+        <p id="modal-solution" style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;"></p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="color: var(--text-white); font-size: 0.95rem; margin-bottom: 0.5rem;">Key Quantitative Metrics</h4>
+        <ul id="modal-metrics" style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; color: #cbd5e1; font-size: 0.88rem;"></ul>
+      </div>
+
+      <div>
+        <h4 style="color: var(--text-white); font-size: 0.95rem; margin-bottom: 0.5rem;">Core Technology Stack</h4>
+        <div id="modal-stack" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="vyro-toast" class="toast-notification"></div>
+
+  <!-- Script helper for preselecting service from card clicks -->
+  <script>
+    function preselectService(serviceKey) {
+      const select = document.getElementById('contact-service');
+      if (select) select.value = serviceKey;
+    }
+  </script>
+
+  <!-- Interactive JavaScript Engine -->
+  <script src="script.js"></script>
+</body>
+</html>

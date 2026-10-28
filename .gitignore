@@ -1,0 +1,12 @@
+# Development Screenshots & temp
+/screenshot_*.png
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# System & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
